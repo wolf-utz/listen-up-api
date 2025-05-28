@@ -1,0 +1,19 @@
+Create a short story in German suitable for a B1 learner. 
+The story should be about the topic: "$TOPIC".
+Use simple but natural German.
+keep the story short and simple.
+Then write 5 listening comprehension questions based on the story.
+
+The output format is JSON. Plaese return a JSON in this format:
+
+{
+    "requestId": "unique id based on the current time",
+    "story": "The story",
+    "questions": [
+        "Question 1",
+        "Question 2",
+        "Question 3",
+        "Question 4",
+        "Question 5"
+    ]
+}

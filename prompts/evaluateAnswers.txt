@@ -1,0 +1,27 @@
+Please evaluate the following German language exercise:
+
+Story:
+$STORY
+
+Questions and Answers:
+$QUESTIONS
+
+For each answer, please provide:
+1. Whether the answer is correct
+2. A brief explanation in German
+3. A suggested correction if the answer is incorrect
+
+Format your response as a JSON object with this structure:
+{
+  "evaluations": [
+    {
+      "question": "question text",
+      "answer": "user's answer",
+      "isCorrect": boolean,
+      "explanation": "explanation in German",
+      "correction": "suggested correction if needed"
+    }
+  ],
+  "overallScore": "percentage of correct answers",
+  "feedback": "overall feedback in German"
+}

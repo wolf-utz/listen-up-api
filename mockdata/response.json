@@ -1,0 +1,12 @@
+{
+  "requestId": "123456789",
+  "story": "Anna liebt es zu reisen. Sie plant gerne neue Abenteuer und entdeckt dabei die Welt. Diesen Sommer hat sie beschlossen, nach Italien zu fahren. Sie packte ihre Koffer, stieg in den Zug und genoss die malerische Landschaft auf dem Weg nach Rom. In Rom angekommen, besuchte sie das Kolosseum, aß leckere Pasta und genoss das italienische Eis. Anna war begeistert von der Schönheit des Landes und freute sich schon auf ihre nächste Reise.",
+  "questions": [
+    "Wo hat Anna beschlossen hinzufahren diesen Sommer?",
+    "Wie ist Anna nach Italien gereist?",
+    "Was hat Anna in Rom besucht?",
+    "Was hat Anna in Italien gegessen?",
+    "Was hat Anna besonders an Italien begeistert?"
+  ],
+  "audioUrl": "/audios/123456789.mp3"
+}
