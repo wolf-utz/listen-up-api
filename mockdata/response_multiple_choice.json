@@ -1,0 +1,58 @@
+{
+  "requestId": "123abc",
+  "story": "Lena war hungrig, also beschloss sie, eine Pizza zu bestellen. Sie wählte eine Pizza mit Schinken, Pilzen und Käse. Nach einer halben Stunde klingelte es an der Tür. Der Pizzabote überreichte ihr die dampfende Pizza. Lena zahlte und setzte sich an den Tisch, um ihr leckeres Essen zu genießen.",
+  "questions": [
+    {
+      "question": "Was hat Lena bestellt?",
+      "choices": [
+        {
+          "text": "Eine Pizza mit Schinken, Pilzen und Käse",
+          "isCorrect": true
+        },
+        {
+          "text": "Ein Hamburger mit Pommes",
+          "isCorrect": false
+        },
+        {
+          "text": "Ein Salat mit Dressing",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "question": "Wie wurde die Pizza geliefert?",
+      "choices": [
+        {
+          "text": "Der Pizzabote brachte sie vorbei",
+          "isCorrect": true
+        },
+        {
+          "text": "Lena musste sie selbst abholen",
+          "isCorrect": false
+        },
+        {
+          "text": "Die Pizza kam per Post",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "question": "Wo hat Lena ihr Essen gegessen?",
+      "choices": [
+        {
+          "text": "Am Tisch",
+          "isCorrect": true
+        },
+        {
+          "text": "Im Auto",
+          "isCorrect": false
+        },
+        {
+          "text": "Im Park",
+          "isCorrect": false
+        }
+      ]
+    }
+  ],
+  "audioUrl": "/audios/123abc.mp3"
+}

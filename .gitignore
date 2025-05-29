@@ -21,3 +21,4 @@ Thumbs.db
 # Project
 public/audios
 !public/audios/123456789.mp3
+!public/audios/123abc.mp3

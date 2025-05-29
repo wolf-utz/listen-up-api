@@ -35,13 +35,18 @@ app.use(express.static("public"));
 
 // Generate story and audio endpoint
 app.post("/api/generate-story", async (req, res) => {
-  if (process.env.USE_MOCK_DATA === "1") {
-    const mockData = require("./mockdata/response.json");
-    return res.json(mockData);
-  }
-
   try {
-    const { topic } = req.body;
+    const { topic, answerType } = req.body;
+
+    if (process.env.USE_MOCK_DATA === "1") {
+      let mockData = require("./mockdata/response.json");
+
+      if (answerType === "multiple") {
+        mockData = require("./mockdata/response_multiple_choice.json");
+      }
+
+      return res.json(mockData);
+    }
 
     if (!topic) {
       return res.status(400).json({ error: "Topic is required" });
@@ -124,8 +129,9 @@ app.post("/api/evaluate-answers", async (req, res) => {
 
     // Validate request
     if (!story || !Array.isArray(questions)) {
-      return res.status(400).json({ 
-        error: "Invalid request format. Expected { story: string, questions: Array }" 
+      return res.status(400).json({
+        error:
+          "Invalid request format. Expected { story: string, questions: Array }",
       });
     }
 
@@ -136,14 +142,19 @@ app.post("/api/evaluate-answers", async (req, res) => {
     );
 
     // Format questions and answers
-    const formattedQuestions = questions.map((q, i) => 
-      `${i + 1}. Question: ${q.question}\n   Answer: ${q.answer || 'No answer provided'}`
-    ).join('\n\n');
+    const formattedQuestions = questions
+      .map(
+        (q, i) =>
+          `${i + 1}. Question: ${q.question}\n   Answer: ${
+            q.answer || "No answer provided"
+          }`
+      )
+      .join("\n\n");
 
     // Replace placeholders in the template
     const evaluationPrompt = evaluationPromptTemplate
-      .replace('$STORY', story)
-      .replace('$QUESTIONS', formattedQuestions);
+      .replace("$STORY", story)
+      .replace("$QUESTIONS", formattedQuestions);
 
     // Get evaluation from OpenAI
     const completion = await openai.chat.completions.create({
@@ -151,12 +162,13 @@ app.post("/api/evaluate-answers", async (req, res) => {
       messages: [
         {
           role: "system",
-          content: "You are a helpful German language teacher. Evaluate the answers based on the story and questions. Always respond in the specified JSON format."
+          content:
+            "You are a helpful German language teacher. Evaluate the answers based on the story and questions. Always respond in the specified JSON format.",
         },
-        { role: "user", content: evaluationPrompt }
+        { role: "user", content: evaluationPrompt },
       ],
       response_format: { type: "json_object" },
-      temperature: 0.3
+      temperature: 0.3,
     });
 
     const content = completion.choices[0]?.message?.content;
@@ -167,12 +179,11 @@ app.post("/api/evaluate-answers", async (req, res) => {
     // Parse and return the evaluation
     const evaluation = JSON.parse(content);
     res.json(evaluation);
-
   } catch (error) {
     console.error("Error evaluating answers:", error);
     res.status(500).json({
       error: "Failed to evaluate answers",
-      details: error.message
+      details: error.message,
     });
   }
 });
