@@ -21,21 +21,16 @@ const ensureAudiosDir = async () => {
 // Initialize directory on startup
 ensureAudiosDir();
 
-// Middleware - Handle CORS preflight
-app.options('*', cors());
+// // CORS configuration
+const corsOptions = {
+  origin: "*",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
 
-// Enable CORS for all routes
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  
-  // Handle preflight
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-  next();
-});
+// Apply CORS to all routes
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
