@@ -68,7 +68,9 @@ app.post("/api/generate-story", async (req, res) => {
     );
 
     // Replace the topic placeholder
-    const prompt = promptTemplate.replace("$TOPIC", topic);
+    const prompt = promptTemplate
+      .replace("$TOPIC", topic)
+      .replace("$TIMESTAMP", Date.now());
 
     // Generate story using OpenAI
     const completion = await openai.chat.completions.create({

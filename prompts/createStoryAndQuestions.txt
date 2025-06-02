@@ -3,12 +3,17 @@ The story should be about the topic: "$TOPIC".
 Use simple but natural German.
 keep the story short and simple.
 Then write 3 listening comprehension questions based on the story.
-The questions should be multiple choice. Each question should have 3 choices. One of the choices should be the correct answer. The other two choices should be plausible distractors.
-
-The output format is JSON. Please return a JSON in this format:
+The questions should be multiple choice. 
+Each question should have 3 choices. 
+One of the choices should be the correct answer. 
+The other two choices should be plausible distractors.
+The story should be max 500 chars.
+The output format is JSON. 
+the current timestamp is: $TIMESTAMP
+Please return a JSON in this format:
 
 {
-    "requestId": "unique identifier",
+    "requestId": "unique identifier | the current timestamp",
     "story": "The story",
     "questions": [
         {
